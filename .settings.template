@@ -1,0 +1,6 @@
+root=/usr0/home/ckaestne/work/TypeChef/LinuxAnalysis/
+projects=linux26333,master
+master.arch=x86
+master.fm=fexpr:approx.fm,dimacs:pcs/x86.dimacs,dimacs:26333.dimacs
+linux26333.arch=x86
+linux26333.fm=fexpr:approx.fm,dimacs:extramodels/2.6.33.3-2var.dimacs,dimacs:pcs/x86.dimacs
