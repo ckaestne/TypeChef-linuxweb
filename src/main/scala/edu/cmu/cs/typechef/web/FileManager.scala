@@ -197,7 +197,10 @@ object FileManager {
         }
         pes ++ tes
     }
-    private def warningsOnly(filename: String) = getErrors(filename).exists(_._3 != "Warning")
+    private def warningsOnly(filename: String) = {
+        val errors = getErrors(filename)
+        errors.nonEmpty && errors.forall(_._3 == "Warning")
+    }
 
     def getDbgOutput(filename: String): String = {
         val file = new File(currentProject.linuxDir, filename + ".dbg")
@@ -219,7 +222,7 @@ object FileManager {
     }
     def setComments(filename: String, comment: String) {
         val file = new File(currentProject.linuxDir, filename + ".comment")
-        assert(file.getParentFile.exists(), "directory does not exist: "+file.getParent)
+        assert(file.getParentFile.exists(), "directory does not exist: " + file.getParent)
         val writer = new FileWriter(file)
         writer.write(comment)
         writer.close()
